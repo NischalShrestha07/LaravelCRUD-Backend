@@ -11,6 +11,7 @@ class ProductController extends Controller
     // method will show product page
     public function index()
     {
+        return view("products.list");
     }
     public function create()
     {
@@ -36,7 +37,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->save();
 
-        return redirect()->route('products.index')->withInput()->withErrors($validator);
+        return redirect()->route('products.index')->with('success', 'Product added Successfully.');
     }
     public function edit()
     {
