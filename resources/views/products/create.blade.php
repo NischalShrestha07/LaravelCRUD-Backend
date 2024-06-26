@@ -45,7 +45,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label h4">Description</label>
-                                <textarea value="{{old('description')}}" name="description" placeholder="Enter Description" class="form-control"></textarea>
+                                <textarea name="description" placeholder="Enter Description" class="form-control" cols="30" rows="5"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="" class="form-label h4">Image</label>

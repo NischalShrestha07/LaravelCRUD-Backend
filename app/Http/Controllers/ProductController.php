@@ -19,12 +19,12 @@ class ProductController extends Controller
     {
         $rules = [
             'name' => 'required|min:5',
-            'sku' => 'required|min:30',
+            'sku' => 'required|min:3',
             'price' => 'required|numeric'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect()->route('products/create')->withInput()->withErrors($validator);
+            return redirect()->route('products.create')->withInput()->withErrors($validator);
         }
     }
     public function edit()
