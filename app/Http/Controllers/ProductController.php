@@ -24,6 +24,11 @@ class ProductController extends Controller
             'sku' => 'required|min:3',
             'price' => 'required|numeric'
         ];
+
+        if ($request->image != "") {
+            $rules["image"] = 'image';
+        }
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return redirect()->route('products.create')->withInput()->withErrors($validator);
@@ -36,6 +41,10 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->description = $request->description;
         $product->save();
+
+        // here we will store image
+        $image = $request->image;
+
 
         return redirect()->route('products.index')->with('success', 'Product added Successfully.');
     }

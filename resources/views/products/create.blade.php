@@ -13,13 +13,18 @@
         <h1 class="text-white text-center">Simple Laravel 11 CRUD</h1>
     </div>
     <div class="container">
+        <div class="row justif-content-center mt-4">
+            <div class="col-md-10 d-flex justif-content-end">
+                <a href="{{route('products.create')}}" class="btn btn-dark">Create</a>
+            </div>
+        </div>
         <div class="row d-flex justif-content-center">
             <div class="col-md-10">
                 <div class="card border-0 shadow-lg my-4">
                     <div class="card-header bg-dark">
                         <h3 class="text-white">Create Product</h3>
                     </div>
-                    <form action="{{route('products.store')}}" method="post">
+                    <form enctype="multipart/form-data" action="{{route('products.store')}}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="mb-3">
