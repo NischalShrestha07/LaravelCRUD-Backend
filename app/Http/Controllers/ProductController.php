@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,6 +27,16 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return redirect()->route('products.create')->withInput()->withErrors($validator);
         }
+
+        // here we will insert product in database
+        $product = new Product();
+        $product->name = $request->name;
+        $product->sku = $request->sku;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+
+        return redirect()->route('products.index')->withInput()->withErrors($validator);
     }
     public function edit()
     {
